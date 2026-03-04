@@ -1,0 +1,77 @@
+[
+  {
+    "nombre": "Samsung galaxy s6",
+    "precio": "360",
+    "url": "https://www.demoblaze.com/prod.html?idp_=1"
+  },
+  {
+    "nombre": "Nokia lumia 1520",
+    "precio": "820",
+    "url": "https://www.demoblaze.com/prod.html?idp_=2"
+  },
+  {
+    "nombre": "Nexus 6",
+    "precio": "650",
+    "url": "https://www.demoblaze.com/prod.html?idp_=3"
+  },
+  {
+    "nombre": "Samsung galaxy s7",
+    "precio": "800",
+    "url": "https://www.demoblaze.com/prod.html?idp_=4"
+  },
+  {
+    "nombre": "Iphone 6 32gb",
+    "precio": "790",
+    "url": "https://www.demoblaze.com/prod.html?idp_=5"
+  },
+  {
+    "nombre": "Sony xperia z5",
+    "precio": "320",
+    "url": "https://www.demoblaze.com/prod.html?idp_=6"
+  },
+  {
+    "nombre": "HTC One M9",
+    "precio": "700",
+    "url": "https://www.demoblaze.com/prod.html?idp_=7"
+  },
+  {
+    "nombre": "Sony vaio i5",
+    "precio": "790",
+    "url": "https://www.demoblaze.com/prod.html?idp_=8"
+  },
+  {
+    "nombre": "Sony vaio i7",
+    "precio": "790",
+    "url": "https://www.demoblaze.com/prod.html?idp_=9"
+  },
+  {
+    "nombre": "Apple monitor 24",
+    "precio": "400",
+    "url": "https://www.demoblaze.com/prod.html?idp_=10"
+  },
+  {
+    "nombre": "MacBook air",
+    "precio": "700",
+    "url": "https://www.demoblaze.com/prod.html?idp_=11"
+  },
+  {
+    "nombre": "Dell i7 8gb",
+    "precio": "700",
+    "url": "https://www.demoblaze.com/prod.html?idp_=12"
+  },
+  {
+    "nombre": "2017 Dell 15.6 Inch",
+    "precio": "700",
+    "url": "https://www.demoblaze.com/prod.html?idp_=13"
+  },
+  {
+    "nombre": "ASUS Full HD",
+    "precio": "230",
+    "url": "https://www.demoblaze.com/prod.html?idp_=14"
+  },
+  {
+    "nombre": "MacBook Pro",
+    "precio": "1100",
+    "url": "https://www.demoblaze.com/prod.html?idp_=15"
+  }
+]
