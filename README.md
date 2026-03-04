@@ -1,92 +1,98 @@
-# Project Name
+# Abstracta UI Automation - OpenCart Project
 
-This repository contains the source code for our web application and its end-to-end tests.
+This repository contains a comprehensive UI testing suite for the **Product Store** platform, developed using **Playwright**. The project implements automation best practices, including the Page Object Model (POM) design pattern and secure sensitive data handling.
 
-## Development
+---
 
-To get started, clone the repository and install dependencies:
+## 🚀 Key Features
 
-```bash
-git clone <repo-url>
-cd project-name
-npm install
-```
+* **Page Object Model (POM)**: Organized structure that decouples selector logic from test scripts, ensuring high maintainability.
+* **Data-Driven Testing**: Leverages JSON files and environment variables to parameterize test scenarios.
+* **Security with Dotenv**: Manages sensitive credentials (user/password) through environment variables to prevent hardcoding sensitive data in the source code.
+* **Robust Locators**: Implementation of Playwright-recommended locators (`getByRole`, `getByText`, `getByPlaceholder`) to ensure stability against DOM changes.
+* **Detailed Reporting**: Automatic generation of HTML reports featuring traces and screenshots upon test failure.
 
-## Running the Application
 
-```bash
-npm start
-```
 
-## Testing
+---
 
-We use Playwright for our end-to-end testing needs.
+## 🛠️ Prerequisites
 
-### Running Playwright Tests
+* [Node.js](https://nodejs.org/) (v18 or higher recommended)
+* npm (included with Node.js)
 
-To open the Playwright Test UI in interactive mode:
+---
 
-```bash
-npx playwright test --ui
-```
+## 📦 Installation & Setup
 
-This will launch a browser window where you can select and run individual Playwright test files and see results interactively.
+1.  **Clone the repository**:
+    ```bash
+    git clone [https://github.com/HernanRios2019/abstracta-ui-automation.git](https://github.com/HernanRios2019/abstracta-ui-automation.git)
+    cd abstracta-ui-automation
+    ```
 
-To run all Playwright tests headlessly (the default for `npx playwright test`):
+2.  **Install dependencies**:
+    Due to potential native compilation issues with recent Node.js versions on macOS, it is recommended to use the ignore-scripts flag:
+    ```bash
+    npm install --ignore-scripts
+    ```
 
+3.  **Install Playwright Browsers**:
+    ```bash
+    npx playwright install
+    ```
+
+4.  **Configure Environment Variables**:
+    Create a `.env` file in the project root with your credentials (refer to `.env.example`):
+    ```env
+    USER_EMAIL=your_email@example.com
+    USER_PASSWORD=your_secure_password
+    ```
+
+---
+
+## 🧪 Running Tests
+
+To execute all tests in headless mode:
 ```bash
 npx playwright test
 ```
 
-You can also run tests in a specific browser (e.g., Chromium):
+To run tests using the Playwright UI Mode (Watch mode):
 ```bash
-npx playwright test --project=chromium
+npx playwright test --ui
 ```
 
-### Test Structure
+To view the latest generated HTML report:
+```bash
+npx playwright show-report
+```
 
-Playwright test files are typically located in the `tests/` directory.
-Page Objects and reusable components are often found in a `pages/` directory (e.g., `pages/LoginPage.ts`).
-Custom utility functions and test setup can be defined in `playwright.config.ts` or separate helper files (e.g., `test-helpers/`).
-The main Playwright configuration is found in `playwright.config.ts` (or `playwright.config.js`).
+---
 
-We adhere strictly to the Page Object Model (POM) pattern for all Playwright tests to ensure maintainability and readability. Refer to `docs/QA/README.md` for our specific Playwright testing standards and conventions.
+## 📂 Project Structure
+```plain text
+├── pages/
+│   ├── LoginPage.js        # Lógica de autenticación (POM)
+│   ├── ProductPage.js      # Lógica de selección de productos (POM)
+│   └── CheckoutPage.js     # Lógica de flujo de compra (POM)
+├── tests/
+│   └── purchase.spec.js    # Suite de pruebas de flujo de compra
+├── .env.example            # Plantilla para variables de entorno
+├── playwright.config.js    # Configuración global de Playwright
+└── package.json
+```
 
-## Documentation
+## 📝 Design Decisions
 
-- `docs/QA/README.md`: Detailed Playwright testing guidelines and best practices.
-- `docs/architecture.md`: Project architecture overview.
+### POM Implementation
+Page interactions are encapsulated within specific classes in the pages/ directory. This ensures that if the OpenCart website's design changes, updates are only required in a single file rather than across multiple test scripts.
 
-## How to use this Agent with Gemini for Playwright Tasks
+### Data Security
+The project utilizes the dotenv library to load credentials from a local .env file. This file is included in .gitignore to guarantee that sensitive information is never pushed to the public repository.
 
-**Important Note:** The current "Agent Contract" provided to this agent is specifically tailored for **Cypress test automation**. While this `README.md` has been updated to reflect Playwright, for this agent to effectively assist with Playwright tasks, its underlying contract (defining its responsibilities, allowed actions, and context sources) would need a significant update to become Playwright-aware.
+### Environment Stability
+To ensure compatibility with recent Node.js versions (v25+) on macOS, dependency installation is managed by omitting unnecessary native build scripts that are not required for core Playwright functionality.
 
-**Assuming a Playwright-specific contract is in place for a future version of this agent**, you would interact with Gemini as follows to leverage its capabilities for Playwright test development:
-
-1.  **Clearly State the Goal:** Begin your prompt by stating the desired outcome. For example:
-    *   "Implement a new Playwright test for the user registration flow."
-    *   "Refactor the existing Playwright tests in `tests/product.spec.ts` to use more robust selectors as defined in `docs/QA/README.md`."
-    *   "Create a new Page Object for the 'Shopping Cart' page at `pages/ShoppingCartPage.ts`."
-
-2.  **Provide Context and Constraints:**
-    *   **Files to Modify/Create:** Specify exact file paths (e.g., `tests/login.spec.ts`, `pages/LoginPage.ts`).
-    *   **Relevant Documentation:** Point to specific sections of `docs/QA/README.md` or other relevant documentation for patterns, selector strategies, or test data conventions.
-    *   **Application Behavior:** Describe the user journey or application functionality the tests should cover, including URLs, expected text, and interactions.
-    *   **Existing Code:** Refer to existing page objects, helper functions, or fixtures that should be leveraged for consistency.
-
-3.  **Specify "Definition of Done":** Remind the agent of the criteria for task completion (e.g., "Ensure all new tests pass 5 consecutive runs to confirm stability, and adhere to `docs/QA/README.md` for clean code.").
-
-**Example Prompt (if the agent were Playwright-aware):**
-
-"Develop a Playwright end-to-end test for the 'Forgot Password' flow.
-1.  Create a new test file: `tests/forgotPassword.spec.ts`.
-2.  Create a new Page Object: `pages/ForgotPasswordPage.ts` with methods for navigating to the `/forgot-password` URL, entering an email into the input field `id=emailInput`, and clicking the 'Send Reset Link' button `id=sendResetButton`.
-3.  The test should verify the following flow:
-    *   Navigate to the Forgot Password page.
-    *   Enter 'user@example.com' into the email field.
-    *   Click the 'Send Reset Link' button.
-    *   Assert that a success message containing 'Password reset link sent to your email.' is visible.
-4.  Ensure tests follow the POM pattern and robust selector guidelines outlined in `docs/QA/README.md`.
-5.  All new tests must pass locally and exhibit no flakiness."
-
-By following these guidelines, Gemini (powered by a Playwright-aware agent, after its contract update) can efficiently assist in developing and maintaining your Playwright test suite.
+## 👨‍💻 Author
+Hernán Rios - GitHub Profile
