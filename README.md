@@ -1,4 +1,4 @@
-# Abstracta UI Automation - OpenCart Project
+# Abstracta UI Automation - Product Store Project
 
 This repository contains a comprehensive UI testing suite for the **Product Store** platform, developed using **Playwright**. The project implements automation best practices, including the Page Object Model (POM) design pattern and secure sensitive data handling.
 
@@ -73,13 +73,16 @@ npx playwright show-report
 ## 📂 Project Structure
 ```plain text
 ├── pages/
-│   ├── LoginPage.js        # Lógica de autenticación (POM)
-│   ├── ProductPage.js      # Lógica de selección de productos (POM)
-│   └── CheckoutPage.js     # Lógica de flujo de compra (POM)
+│   ├── CartPage.js               # Purchase flow logic (POM)
+│   ├── HeaderPage.js             # Navigation logic (POM)
+│   ├── LoginPage.js              # Authentication logic (POM)
+│   └── StorePage.js              # Product selection logic (POM)
 ├── tests/
-│   └── purchase.spec.js    # Suite de pruebas de flujo de compra
-├── .env.example            # Plantilla para variables de entorno
-├── playwright.config.js    # Configuración global de Playwright
+│   ├── login.spec.js             # Login test suite
+│   ├── products-data.spec.js     # Products data test suite
+│   └── purchase.spec.js          # Purchase test suite
+├── .env.example                  # Template for environment variables
+├── playwright.config.js          # Playwright global configuration
 └── package.json
 ```
 
